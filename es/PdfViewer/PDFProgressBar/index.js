@@ -1,6 +1,5 @@
-import React from 'react';
-import './index.scss';
-
+import React from "react";
+import "./index.css";
 var PDFProgressBar = function PDFProgressBar(_ref) {
   var progress = _ref.progress;
   if (progress === 0 || progress === 100) return null;
@@ -15,5 +14,4 @@ var PDFProgressBar = function PDFProgressBar(_ref) {
     }
   })));
 };
-
 export default PDFProgressBar;
