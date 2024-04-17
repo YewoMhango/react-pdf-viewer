@@ -1,4 +1,3 @@
-function _assertThisInitialized(self) { if (self === void 0) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return self; }
 function _inheritsLoose(subClass, superClass) { subClass.prototype = Object.create(superClass.prototype); subClass.prototype.constructor = subClass; _setPrototypeOf(subClass, superClass); }
 function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf ? Object.setPrototypeOf.bind() : function _setPrototypeOf(o, p) { o.__proto__ = p; return o; }; return _setPrototypeOf(o, p); }
 function _defineProperty(obj, key, value) { key = _toPropertyKey(key); if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
@@ -10,14 +9,13 @@ import "./index.css";
 PDFJS.workerSrc = "https://cdnjs.cloudflare.com/ajax/libs/pdf.js/2.0.338/pdf.worker.js";
 var SCROLL_TOP_PADDING = 200;
 export var PdfPages = /*#__PURE__*/function (_React$Component) {
-  _inheritsLoose(PdfPages, _React$Component);
   function PdfPages() {
     var _this;
     for (var _len = arguments.length, args = new Array(_len), _key = 0; _key < _len; _key++) {
       args[_key] = arguments[_key];
     }
     _this = _React$Component.call.apply(_React$Component, [this].concat(args)) || this;
-    _defineProperty(_assertThisInitialized(_this), "setupViewer", function () {
+    _defineProperty(_this, "setupViewer", function () {
       PDFJS.disableTextLayer = false;
       PDFJS.externalLinkTarget = PDFJS.LinkTarget.PARENT;
 
@@ -44,7 +42,7 @@ export var PdfPages = /*#__PURE__*/function (_React$Component) {
       _this.props.setPdfViewer(_this._pdfViewer);
       _this.props.setFindController(_this._pdfFindController);
     });
-    _defineProperty(_assertThisInitialized(_this), "onScrollCheck", function () {
+    _defineProperty(_this, "onScrollCheck", function () {
       if (_this._pdfViewer) {
         var _this$docViewer = _this.docViewer,
           scrollTop = _this$docViewer.scrollTop,
@@ -53,7 +51,7 @@ export var PdfPages = /*#__PURE__*/function (_React$Component) {
         _this.props.setCurrentPage(currentPage);
       }
     });
-    _defineProperty(_assertThisInitialized(_this), "stream", function (props) {
+    _defineProperty(_this, "stream", function (props) {
       var url = props.url;
       if (url) {
         var xhr = new XMLHttpRequest();
@@ -80,7 +78,7 @@ export var PdfPages = /*#__PURE__*/function (_React$Component) {
         xhr.send();
       }
     });
-    _defineProperty(_assertThisInitialized(_this), "loadPDF", function () {
+    _defineProperty(_this, "loadPDF", function () {
       var src = _this.pdf;
       if (!src) {
         return;
@@ -94,12 +92,13 @@ export var PdfPages = /*#__PURE__*/function (_React$Component) {
         _this.pdfLoadError.emit(error);
       });
     });
-    _defineProperty(_assertThisInitialized(_this), "zoom", function (scale) {
+    _defineProperty(_this, "zoom", function (scale) {
       _this._zoom = scale;
       _this._pdfViewer.currentScale = _this._zoom;
     });
     return _this;
   }
+  _inheritsLoose(PdfPages, _React$Component);
   var _proto = PdfPages.prototype;
   _proto.componentDidMount = function componentDidMount() {
     this.setupViewer();

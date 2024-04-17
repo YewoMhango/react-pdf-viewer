@@ -1,4 +1,3 @@
-function _assertThisInitialized(self) { if (self === void 0) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return self; }
 function _inheritsLoose(subClass, superClass) { subClass.prototype = Object.create(superClass.prototype); subClass.prototype.constructor = subClass; _setPrototypeOf(subClass, superClass); }
 function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf ? Object.setPrototypeOf.bind() : function _setPrototypeOf(o, p) { o.__proto__ = p; return o; }; return _setPrototypeOf(o, p); }
 function _defineProperty(obj, key, value) { key = _toPropertyKey(key); if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
@@ -13,14 +12,13 @@ import PDFProgressBar from "./PDFProgressBar";
 import "./index.css";
 var ZOOM_STEP = 0.2;
 var PdfViewer = /*#__PURE__*/function (_PureComponent) {
-  _inheritsLoose(PdfViewer, _PureComponent);
   function PdfViewer() {
     var _this;
     for (var _len = arguments.length, args = new Array(_len), _key = 0; _key < _len; _key++) {
       args[_key] = arguments[_key];
     }
     _this = _PureComponent.call.apply(_PureComponent, [this].concat(args)) || this;
-    _defineProperty(_assertThisInitialized(_this), "state", {
+    _defineProperty(_this, "state", {
       pdf: null,
       scale: 1.2,
       progress: 0,
@@ -28,7 +26,7 @@ var PdfViewer = /*#__PURE__*/function (_PureComponent) {
       showSearchBar: false,
       showThumbSidebar: _this.props.showThumbnailSidebar
     });
-    _defineProperty(_assertThisInitialized(_this), "setCurrentPage", function (currentPage) {
+    _defineProperty(_this, "setCurrentPage", function (currentPage) {
       if (currentPage !== _this.state.currentPage) {
         _this.setState({
           currentPage: currentPage
@@ -37,71 +35,72 @@ var PdfViewer = /*#__PURE__*/function (_PureComponent) {
         onChangePage && onChangePage(currentPage);
       }
     });
-    _defineProperty(_assertThisInitialized(_this), "setPdf", function (pdf) {
+    _defineProperty(_this, "setPdf", function (pdf) {
       _this.setState({
         pdf: pdf
       });
     });
-    _defineProperty(_assertThisInitialized(_this), "setPdfViewer", function (pdfViewer) {
+    _defineProperty(_this, "setPdfViewer", function (pdfViewer) {
       _this.setState({
         pdfViewer: pdfViewer
       });
     });
-    _defineProperty(_assertThisInitialized(_this), "setFindController", function (findController) {
+    _defineProperty(_this, "setFindController", function (findController) {
       _this._pdfFindController = findController;
     });
-    _defineProperty(_assertThisInitialized(_this), "onZoomIn", function () {
+    _defineProperty(_this, "onZoomIn", function () {
       _this.setState({
         scale: _this.state.scale + ZOOM_STEP
       });
       var onZoomIn = _this.props.onZoomIn;
       onZoomIn && onZoomIn();
     });
-    _defineProperty(_assertThisInitialized(_this), "onZoomOut", function () {
+    _defineProperty(_this, "onZoomOut", function () {
       _this.setState({
         scale: _this.state.scale - ZOOM_STEP
       });
       var onZoomOut = _this.props.onZoomOut;
       onZoomOut && onZoomOut();
     });
-    _defineProperty(_assertThisInitialized(_this), "updateProgressBar", function (progress) {
+    _defineProperty(_this, "updateProgressBar", function (progress) {
       _this.setState({
         progress: progress
       });
       var onProgress = _this.props.onProgress;
       onProgress && onProgress();
     });
-    _defineProperty(_assertThisInitialized(_this), "onChangePage", function (e) {
+    _defineProperty(_this, "onChangePage", function (e) {
       var newPageNum = Number(e.target.value);
       _this.scrollTo(newPageNum);
     });
-    _defineProperty(_assertThisInitialized(_this), "scrollTo", function (page) {
+    _defineProperty(_this, "scrollTo", function (page) {
       _this.setCurrentPage(page);
       _this.goToPage(page);
     });
-    _defineProperty(_assertThisInitialized(_this), "goToPage", function (pageNumber) {
+    _defineProperty(_this, "goToPage", function (pageNumber) {
       var pdfViewer = _this.state.pdfViewer;
       pdfViewer.currentPageNumber = pageNumber;
     });
-    _defineProperty(_assertThisInitialized(_this), "toggleThumbnail", function () {
+    _defineProperty(_this, "toggleThumbnail", function () {
       _this.setState({
         showThumbSidebar: !_this.state.showThumbSidebar
       });
       var onToggleThumbnail = _this.props.onToggleThumbnail;
       onToggleThumbnail && onToggleThumbnail(!_this.state.showThumbSidebar);
     });
-    _defineProperty(_assertThisInitialized(_this), "showSearchBar", function () {
+    _defineProperty(_this, "showSearchBar", function () {
       _this.setState({
         showSearchBar: true
       });
     });
-    _defineProperty(_assertThisInitialized(_this), "hideSearchBar", function () {
+    _defineProperty(_this, "hideSearchBar", function () {
       _this.setState({
         showSearchBar: false
       });
     });
     return _this;
   }
+  _inheritsLoose(PdfViewer, _PureComponent);
   var _proto = PdfViewer.prototype;
   _proto.render = function render() {
     var _this$state = this.state,

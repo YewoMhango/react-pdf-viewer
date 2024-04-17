@@ -1,4 +1,3 @@
-function _assertThisInitialized(self) { if (self === void 0) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return self; }
 function _inheritsLoose(subClass, superClass) { subClass.prototype = Object.create(superClass.prototype); subClass.prototype.constructor = subClass; _setPrototypeOf(subClass, superClass); }
 function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf ? Object.setPrototypeOf.bind() : function _setPrototypeOf(o, p) { o.__proto__ = p; return o; }; return _setPrototypeOf(o, p); }
 function _defineProperty(obj, key, value) { key = _toPropertyKey(key); if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
@@ -8,29 +7,28 @@ import React, { Component } from "react";
 import { PageDown, PageUp, SearchIcon, Thumbnail, ZoomIn, ZoomOut } from "../../assets";
 import "./index.css";
 var Toolbox = /*#__PURE__*/function (_Component) {
-  _inheritsLoose(Toolbox, _Component);
   function Toolbox() {
     var _this;
     for (var _len = arguments.length, args = new Array(_len), _key = 0; _key < _len; _key++) {
       args[_key] = arguments[_key];
     }
     _this = _Component.call.apply(_Component, [this].concat(args)) || this;
-    _defineProperty(_assertThisInitialized(_this), "currentPage", React.createRef());
-    _defineProperty(_assertThisInitialized(_this), "state", {
+    _defineProperty(_this, "currentPage", React.createRef());
+    _defineProperty(_this, "state", {
       pageInputFocus: false
     });
-    _defineProperty(_assertThisInitialized(_this), "onFocusPageInput", function () {
+    _defineProperty(_this, "onFocusPageInput", function () {
       _this.currentPage.current.select();
       _this.setState({
         pageInputFocus: true
       });
     });
-    _defineProperty(_assertThisInitialized(_this), "onBlurPageInput", function () {
+    _defineProperty(_this, "onBlurPageInput", function () {
       _this.setState({
         pageInputFocus: false
       });
     });
-    _defineProperty(_assertThisInitialized(_this), "pageUp", function () {
+    _defineProperty(_this, "pageUp", function () {
       var _this$props = _this.props,
         currentPage = _this$props.currentPage,
         setCurrentPage = _this$props.setCurrentPage,
@@ -41,7 +39,7 @@ var Toolbox = /*#__PURE__*/function (_Component) {
         goToPage(newPage);
       }
     });
-    _defineProperty(_assertThisInitialized(_this), "pageDown", function () {
+    _defineProperty(_this, "pageDown", function () {
       var _this$props2 = _this.props,
         currentPage = _this$props2.currentPage,
         setCurrentPage = _this$props2.setCurrentPage,
@@ -55,6 +53,7 @@ var Toolbox = /*#__PURE__*/function (_Component) {
     });
     return _this;
   }
+  _inheritsLoose(Toolbox, _Component);
   var _proto = Toolbox.prototype;
   _proto.render = function render() {
     var pageInputFocus = this.state.pageInputFocus;

@@ -15,8 +15,6 @@
         "clean": "nwb clean-module && nwb clean-demo",
         "prepublishOnly": "npm run build",
         "start": "nwb serve-react-demo",
-        "test": "jest --watch --no-cache",
-        "test:cover": "jest --coverage",
         "open:coverage": "open ./coverage/lcov-report/index.html"
     },
     "dependencies": {
@@ -28,15 +26,10 @@
     },
     "devDependencies": {
         "@babel/plugin-proposal-class-properties": "^7.8.3",
-        "babel-jest": "^26.0.1",
-        "enzyme": "^3.11.0",
-        "enzyme-adapter-react-16": "^1.15.2",
-        "enzyme-to-json": "^3.4.4",
         "identity-obj-proxy": "^3.0.0",
-        "jest": "^26.0.1",
-        "nwb": "0.24.x",
-        "react": "^16.13.1",
-        "react-dom": "^16.13.1"
+        "nwb": "0.25.x",
+        "react": "^18.2.0",
+        "react-dom": "^18.2.0"
     },
     "author": "trinhngocdieu",
     "homepage": "https://intelllex.github.io/react-pdf/",
