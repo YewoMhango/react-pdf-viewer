@@ -7,6 +7,7 @@ import {
     Thumbnail,
     ZoomIn,
     ZoomOut,
+    FullScreenIcon,
 } from "../../assets";
 
 import "./index.css";
@@ -60,6 +61,7 @@ class Toolbox extends Component {
             onZoomOut,
             showSearchBar,
             onChangePage,
+            onFullScreen,
         } = this.props;
 
         const numPages = this.props.pdf ? this.props.pdf.numPages : "-";
@@ -113,6 +115,10 @@ class Toolbox extends Component {
 
                         <ZoomIn id="zoom-in" onClick={onZoomIn} />
                         <ZoomOut id="zoom-out" onClick={onZoomOut} />
+                        <FullScreenIcon
+                            id="fullscreen-icon"
+                            onClick={onFullScreen}
+                        />
                         <SearchIcon id="search-icon" onClick={showSearchBar} />
                     </div>
                 </div>

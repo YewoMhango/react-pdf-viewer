@@ -1,4 +1,4 @@
-import React, { PureComponent } from "react";
+import React, { PureComponent, createRef } from "react";
 
 import PDFPages from "./PDFPages";
 import PDFToolbox from "./PDFToolbox";
@@ -10,12 +10,15 @@ import "./index.css";
 
 const ZOOM_STEP = 0.2;
 class PdfViewer extends PureComponent {
+    containerRef = createRef();
+
     state = {
         pdf: null,
         scale: 1.2,
         progress: 0,
         currentPage: 1,
         showSearchBar: false,
+        isFullScreen: false,
         showThumbSidebar: this.props.showThumbnailSidebar,
     };
 
@@ -53,6 +56,16 @@ class PdfViewer extends PureComponent {
         });
         const { onZoomOut } = this.props;
         onZoomOut && onZoomOut();
+    };
+
+    onFullScreen = () => {
+        if (!this.state.isFullScreen) {
+            this.containerRef.current?.requestFullscreen();
+            this.setState({ isFullScreen: true });
+        } else {
+            document.exitFullscreen();
+            this.setState({ isFullScreen: false });
+        }
     };
 
     updateProgressBar = (progress) => {
@@ -112,7 +125,7 @@ class PdfViewer extends PureComponent {
         const { url, showProgressBar, showToolbox } = this.props;
 
         return (
-            <div id="viewer-container">
+            <div id="viewer-container" ref={this.containerRef}>
                 {showProgressBar && <PDFProgressBar progress={progress} />}
                 <div id="viewer">
                     {/* PDF SearchBar */}
@@ -150,6 +163,7 @@ class PdfViewer extends PureComponent {
                                 onZoomOut={this.onZoomOut}
                                 showSearchBar={this.showSearchBar}
                                 onChangePage={this.onChangePage}
+                                onFullScreen={this.onFullScreen}
                             />
                         )}
 

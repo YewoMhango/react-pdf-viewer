@@ -3,7 +3,7 @@ function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf ? Objec
 function _defineProperty(obj, key, value) { key = _toPropertyKey(key); if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
 function _toPropertyKey(t) { var i = _toPrimitive(t, "string"); return "symbol" == typeof i ? i : i + ""; }
 function _toPrimitive(t, r) { if ("object" != typeof t || !t) return t; var e = t[Symbol.toPrimitive]; if (void 0 !== e) { var i = e.call(t, r || "default"); if ("object" != typeof i) return i; throw new TypeError("@@toPrimitive must return a primitive value."); } return ("string" === r ? String : Number)(t); }
-import React, { PureComponent } from "react";
+import React, { PureComponent, createRef } from "react";
 import PDFPages from "./PDFPages";
 import PDFToolbox from "./PDFToolbox";
 import PDFThumbBar from "./PDFThumbBar";
@@ -18,12 +18,14 @@ var PdfViewer = /*#__PURE__*/function (_PureComponent) {
       args[_key] = arguments[_key];
     }
     _this = _PureComponent.call.apply(_PureComponent, [this].concat(args)) || this;
+    _defineProperty(_this, "containerRef", createRef());
     _defineProperty(_this, "state", {
       pdf: null,
       scale: 1.2,
       progress: 0,
       currentPage: 1,
       showSearchBar: false,
+      isFullScreen: false,
       showThumbSidebar: _this.props.showThumbnailSidebar
     });
     _defineProperty(_this, "setCurrentPage", function (currentPage) {
@@ -61,6 +63,20 @@ var PdfViewer = /*#__PURE__*/function (_PureComponent) {
       });
       var onZoomOut = _this.props.onZoomOut;
       onZoomOut && onZoomOut();
+    });
+    _defineProperty(_this, "onFullScreen", function () {
+      if (!_this.state.isFullScreen) {
+        var _this$containerRef$cu;
+        (_this$containerRef$cu = _this.containerRef.current) === null || _this$containerRef$cu === void 0 ? void 0 : _this$containerRef$cu.requestFullscreen();
+        _this.setState({
+          isFullScreen: true
+        });
+      } else {
+        document.exitFullscreen();
+        _this.setState({
+          isFullScreen: false
+        });
+      }
     });
     _defineProperty(_this, "updateProgressBar", function (progress) {
       _this.setState({
@@ -119,7 +135,8 @@ var PdfViewer = /*#__PURE__*/function (_PureComponent) {
       showProgressBar = _this$props.showProgressBar,
       showToolbox = _this$props.showToolbox;
     return /*#__PURE__*/React.createElement("div", {
-      id: "viewer-container"
+      id: "viewer-container",
+      ref: this.containerRef
     }, showProgressBar && /*#__PURE__*/React.createElement(PDFProgressBar, {
       progress: progress
     }), /*#__PURE__*/React.createElement("div", {
@@ -144,7 +161,8 @@ var PdfViewer = /*#__PURE__*/function (_PureComponent) {
       onZoomIn: this.onZoomIn,
       onZoomOut: this.onZoomOut,
       showSearchBar: this.showSearchBar,
-      onChangePage: this.onChangePage
+      onChangePage: this.onChangePage,
+      onFullScreen: this.onFullScreen
     }), /*#__PURE__*/React.createElement("div", {
       id: "pdf-pages"
     }, url && /*#__PURE__*/React.createElement(PDFPages, {
