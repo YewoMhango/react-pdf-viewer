@@ -80,6 +80,10 @@ var PdfViewer = /*#__PURE__*/function (_PureComponent) {
     _defineProperty(_this, "goToPage", function (pageNumber) {
       var pdfViewer = _this.state.pdfViewer;
       pdfViewer.currentPageNumber = pageNumber;
+      document.querySelector(".page[data-page-number=\"" + pageNumber + "\"]").scrollIntoView({
+        behavior: "smooth",
+        block: "start"
+      });
     });
     _defineProperty(_this, "toggleThumbnail", function () {
       _this.setState({

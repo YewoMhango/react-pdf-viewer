@@ -74,6 +74,9 @@ class PdfViewer extends PureComponent {
     goToPage = (pageNumber) => {
         const { pdfViewer } = this.state;
         pdfViewer.currentPageNumber = pageNumber;
+        document
+            .querySelector(`.page[data-page-number="${pageNumber}"]`)
+            .scrollIntoView({ behavior: "smooth", block: "start" });
     };
 
     toggleThumbnail = () => {

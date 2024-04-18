@@ -1,14 +1,16 @@
 #viewer-container {
-  position: absolute;
-  width: 100%;
-  height: 100%;
-  overflow: auto;
+    position: relative;
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
 }
 #viewer-container #viewer {
-  width: 100%;
-  padding-top: 50px;
-  background-color: #F1F3F7;
-  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+    width: 100%;
+    background-color: #f1f3f7;
+    font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+    position: relative;
+    height: 100%;
+    box-sizing: border-box;
 }
 
 /*# sourceMappingURL=index.css.map */

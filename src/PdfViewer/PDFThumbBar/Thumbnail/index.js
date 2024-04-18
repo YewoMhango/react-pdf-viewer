@@ -18,7 +18,7 @@ class Thumbnail extends PureComponent {
         } = this.props;
 
         return (
-            <div className="thumbnail">
+            <div className="thumbnail" id={"thumbnail-" + pageNum}>
                 <img
                     alt={pageNum}
                     src={thumbnailSrc}

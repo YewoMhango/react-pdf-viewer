@@ -29,7 +29,8 @@ var Thumbnail = /*#__PURE__*/function (_PureComponent) {
       pageNum = _this$props2$data.pageNum,
       currentPage = _this$props2.currentPage;
     return /*#__PURE__*/React.createElement("div", {
-      className: "thumbnail"
+      className: "thumbnail",
+      id: "thumbnail-" + pageNum
     }, /*#__PURE__*/React.createElement("img", {
       alt: pageNum,
       src: thumbnailSrc,

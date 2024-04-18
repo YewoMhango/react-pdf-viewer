@@ -85,6 +85,7 @@ export var PdfPages = /*#__PURE__*/function (_React$Component) {
       }
       PDFJS.getDocument(src).then(function (pdf) {
         _this._pdf = pdf;
+        console.log(pdf);
         _this.props.setPdf(_this._pdf);
         _this.update();
       }, function (err) {
@@ -103,7 +104,7 @@ export var PdfPages = /*#__PURE__*/function (_React$Component) {
   _proto.componentDidMount = function componentDidMount() {
     this.setupViewer();
     this.stream(this.props);
-    this.docViewer = document.getElementById("viewer-container");
+    this.docViewer = document.querySelector(".pdfViewer");
     this.docViewer.addEventListener("scroll", this.onScrollCheck);
   };
   _proto.componentWillReceiveProps = function componentWillReceiveProps(newProps) {

@@ -11,7 +11,7 @@ export class PdfPages extends React.Component {
         this.setupViewer();
         this.stream(this.props);
 
-        this.docViewer = document.getElementById("viewer-container");
+        this.docViewer = document.querySelector(".pdfViewer");
         this.docViewer.addEventListener("scroll", this.onScrollCheck);
     }
 
@@ -105,6 +105,7 @@ export class PdfPages extends React.Component {
         PDFJS.getDocument(src).then(
             (pdf) => {
                 this._pdf = pdf;
+                console.log(pdf);
                 this.props.setPdf(this._pdf);
                 this.update();
             },
