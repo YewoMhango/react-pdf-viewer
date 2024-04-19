@@ -106,9 +106,6 @@ var Toolbox = /*#__PURE__*/function (_Component) {
     }), /*#__PURE__*/React.createElement(FullScreenIcon, {
       id: "fullscreen-icon",
       onClick: onFullScreen
-    }), /*#__PURE__*/React.createElement(SearchIcon, {
-      id: "search-icon",
-      onClick: showSearchBar
     }))));
   };
   return Toolbox;
