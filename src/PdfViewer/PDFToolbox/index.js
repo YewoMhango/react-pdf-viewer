@@ -119,7 +119,7 @@ class Toolbox extends Component {
                             id="fullscreen-icon"
                             onClick={onFullScreen}
                         />
-                        <SearchIcon id="search-icon" onClick={showSearchBar} />
+                        {/* <SearchIcon id="search-icon" onClick={showSearchBar} /> */}
                     </div>
                 </div>
             </div>
